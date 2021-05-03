@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'Car4U'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_198d9f6fa1f64027894214e3f75a09f3 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8d849684955b477ab70cd24b0790bd27 }}
         package: .
