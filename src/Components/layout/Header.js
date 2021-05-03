@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import bgImage from '../../HOC/background.jpg';
 import '../../App.css';
 
@@ -12,12 +11,10 @@ class Header extends Component {
 	}
 
 	render() {
-		const { title } = this.props;
-
 		return (
             <div>
               
-                <img className="img1" src={ bgImage } />
+                <img className="img1" src={ bgImage } alt=""/>
                 
 
             

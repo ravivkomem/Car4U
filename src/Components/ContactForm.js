@@ -20,7 +20,7 @@ const ContactForm = (props) => {
         message: '',
     }
 
-    const [{name, email, message}, setState] = useState(initialState);
+    let [{name, email, message}, ] = useState(initialState);
 
     
     /* Data Fields Event Change Handler */

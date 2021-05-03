@@ -25,7 +25,7 @@ class HeaderSection extends React.Component {
     return (
         <Navbar bg="primary" variant="dark">
             <Navbar.Brand href="/">
-                <img src={LogoImg} style={{width: "6rem"}}></img>
+                <img src={LogoImg} style={{width: "6rem"}} alt=""></img>
             </Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
