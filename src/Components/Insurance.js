@@ -62,7 +62,7 @@ class Insurance extends React.Component {
         price += this.currentPrice * 0.01 * (this.state.endDate.diff(this.state.startDate, 'days') + 1);
       }
 
-      return price;
+      return parseInt(price);
   }
 
   render() {
