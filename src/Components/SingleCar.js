@@ -4,9 +4,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-// import { CartContext } from '../../contexts/CartContext';
-// import { formatNumber } from '../../helpers/utils';
 
 /* ########################################### */
 /* #  C L A S S   D E F I N I T I O N        # */
@@ -29,11 +26,7 @@ class SingleCar extends React.Component {
     constructor(props) 
     {
       super(props);
-
-      this.id = props.id;
-      this.img = props.img;
-      this.price = props.price;
-      this.name = props.name;
+      this.displayInfo = false;
       sessionStorage.clear();
     }
 
@@ -41,30 +34,46 @@ class SingleCar extends React.Component {
         return false;
     }
 
+    showDetails = (e) => {
+        this.displayInfo = !this.displayInfo;
+        this.forceUpdate();
+    }
+
     /*  @ brief:  Render Function  */
     render() {
-        /* Decide the button for display - TODO: Set on click method*/
-        let button;
-        if (this.isInCart === true)
+        let carImg;
+        let engineDetails = "";
+        let maxSpeedDetails = "";
+        const cardStyle = {height: '20rem' ,width: '20rem' , marginTop: '3rem', background: 'rgba(252, 252, 252, 0.6)'};
+        
+        /* Set the car image  */
+        if (this.displayInfo === true)
         {
-            button = <Button className="btn btn-outline-primary btn-sm">Add more</Button>
+            carImg = <img style={{display: "block", margin: "0px auto 10px", maxHeight: "100px"}} className="img-fluid" 
+            src={this.props.img + '?v=' + this.props.id} alt=""/>;
+            engineDetails = <div className="text-center">Engine Size: {this.props.engine}</div>;
+            maxSpeedDetails = <div className="text-center">Max Speed: {this.props.maxSpeed}</div>;
         }
         else
         {
-            button = <Link to="/checkout" className="btn btn-primary btn-sm">Purchase</Link>
+            carImg = <img style={{display: "block", margin: "0px auto 10px", maxHeight: "150px"}} className="img-fluid" 
+            src={this.props.img + '?v=' + this.props.id} alt=""/>;
+            engineDetails = "";
+            maxSpeedDetails = "";
         }
 
         return (
-            <Card style={{width: '20rem' , marginTop: '3rem', background: 'rgba(252, 252, 252, 0.6)'}}>
+            <Card style={cardStyle}>
               <Card.Body>
                 <Card.Text>
-                    <img style={{display: "block", margin: "0 auto 10px", maxHeight: "150px"}} className="img-fluid" 
-                    src={this.img + '?v=' + this.id} alt=""/>
-                    <p className="text-center">{this.name}</p>
-                    <h3 className="text-center">{this.price} $</h3>
+                    {carImg}
+                    <h6 className="text-center">{this.props.name}</h6>
+                    {engineDetails}
+                    {maxSpeedDetails}
+                    <h3 className="text-center">{this.props.price} $</h3>
                     <div className="text-right">
-                        <Link className="btn btn-link btn-sm mr-2">Details</Link> {/* TODO - Set details? */}
-                        {button}
+                        <Link to='#' className="btn btn-link btn-sm mr-2" onClick={this.showDetails}>Details</Link>
+                        <Link to={"/checkout/"+String(this.props.price)+"/"+String(this.props.name)} className="btn btn-primary btn-sm">Purchase</Link>
                     </div>
                 </Card.Text>
               </Card.Body>

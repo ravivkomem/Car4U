@@ -11,10 +11,11 @@ class Header extends Component {
 	}
 
 	render() {
+
 		return (
             <div>
               
-                <img className="img1" src={ bgImage } alt=""/>
+                <img className="img1" alt="" src={ bgImage } />
                 
 
             

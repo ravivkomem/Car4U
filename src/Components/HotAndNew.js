@@ -2,7 +2,6 @@
 /* #         I M P O R T S                   # */
 /* ########################################### */
 import React from 'react';
-//import './Home.css';
 
 /* ########################################### */
 /* #  C L A S S   D E F I N I T I O N        # */
@@ -17,7 +16,8 @@ class HotAndNew extends React.Component {
 
   render() {
     return (
-      <h1>Hot & New</h1>
+      
+     <h1>HotAndNew</h1>
     );
   }
 
